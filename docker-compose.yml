@@ -1,0 +1,17 @@
+name: jaypee-sales
+services:
+  postgres:
+    image: postgres:16
+    container_name: jaypee-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: jaypee_sales
+      POSTGRES_USER: jaypee
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
